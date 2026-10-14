@@ -1,0 +1,60 @@
+{
+  "info": {
+    "name": "backend_customers",
+    "description": "Microservicio customers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080/api/v1" }
+  ],
+  "item": [
+    {
+      "name": "Crear cliente",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "{{baseUrl}}/customers", "host": ["{{baseUrl}}"], "path": ["customers"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Juan\",\n  \"lastName\": \"Pérez\",\n  \"email\": \"juan.perez@mail.com\",\n  \"dni\": \"70123456\",\n  \"birthDate\": \"1993-04-18\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Consultar clientes (sin filtros)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/customers", "host": ["{{baseUrl}}"], "path": ["customers"] }
+      }
+    },
+    {
+      "name": "Consultar clientes por DNI",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/customers?dni=45871236",
+          "host": ["{{baseUrl}}"], "path": ["customers"],
+          "query": [{ "key": "dni", "value": "45871236" }]
+        }
+      }
+    },
+    {
+      "name": "Consultar clientes por email",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/customers?email=maria.torres@mail.com",
+          "host": ["{{baseUrl}}"], "path": ["customers"],
+          "query": [{ "key": "email", "value": "maria.torres@mail.com" }]
+        }
+      }
+    },
+    {
+      "name": "Consultar indicadores",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/customers/indicators", "host": ["{{baseUrl}}"], "path": ["customers", "indicators"] }
+      }
+    }
+  ]
+}
